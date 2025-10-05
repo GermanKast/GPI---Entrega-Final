@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Históricos - Patitas Felices</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-gray-800 text-white w-64 min-h-screen p-4 fixed md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+            <div class="flex items-center mb-8">
+                <i class="fa-solid fa-paw text-3xl text-teal-400 mr-3"></i>
+                <h1 class="text-2xl font-bold">Patitas Felices</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <a href="home.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-home mr-3 w-6 text-center"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="services.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-box mr-3 w-6 text-center"></i>
+                            Servicios
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="clients.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-users mr-3 w-6 text-center"></i>
+                            Clientes y Mascotas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="appointments.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-calendar-alt mr-3 w-6 text-center"></i>
+                            Citas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="personal.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-user-tie mr-3 w-6 text-center"></i>
+                            Personal
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="historicos.html" class="flex items-center p-3 rounded-lg bg-teal-600 font-semibold">
+                            <i class="fas fa-history mr-3 w-6 text-center"></i>
+                            Históricos
+                        </a>
+                    </li>
+                    <li class="mt-auto absolute bottom-4 w-56">
+                        <a href="login.html" class="flex items-center p-3 rounded-lg hover:bg-red-500 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3 w-6 text-center"></i>
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-md p-4 flex justify-between items-center">
+                 <button id="menu-toggle" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <h2 class="text-2xl font-bold text-gray-800">Histórico de Servicios</h2>
+                <div class="flex items-center">
+                    <span class="mr-4 text-gray-700">Bienvenido, Admin</span>
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Avatar de usuario" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label for="search-text" class="block text-sm font-medium text-gray-700 mb-1">Buscar por Cliente / Mascota</label>
+                            <input type="text" id="search-text" placeholder="Escriba un nombre..." class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+                        <div>
+                            <label for="date-from" class="block text-sm font-medium text-gray-700 mb-1">Desde</label>
+                            <input type="date" id="date-from" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+                        <div>
+                            <label for="date-to" class="block text-sm font-medium text-gray-700 mb-1">Hasta</label>
+                            <input type="date" id="date-to" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3 font-semibold">Cliente / Mascota</th>
+                                    <th class="p-3 font-semibold">Servicio</th>
+                                    <th class="p-3 font-semibold">Personal</th>
+                                    <th class="p-3 font-semibold">Fecha</th>
+                                    <th class="p-3 font-semibold text-right">Valor Pagado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table-body">
+                                <!-- Data will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // --- Sidebar Toggle for Mobile ---
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        });
+
+        // --- Mock Data ---
+        const historyData = [
+            { id: 1, clientName: 'Ana Pérez', petName: 'Rocky', serviceName: 'Baño y Secado', staffName: 'Juanita Manjarres', date: '2025-09-15', price: 55000 },
+            { id: 2, clientName: 'Carlos Gómez', petName: 'Luna', serviceName: 'Corte de Uñas', staffName: 'Pedro Pascal', date: '2025-09-18', price: 25000 },
+            { id: 3, clientName: 'Laura Jimenez', petName: 'Max', serviceName: 'Corte de Pelo', staffName: 'Sofia Vergara', date: '2025-09-20', price: 70000 },
+            { id: 4, clientName: 'Ana Pérez', petName: 'Mishi', serviceName: 'Baño y Secado (Gato)', staffName: 'Pedro Pascal', date: '2025-09-22', price: 65000 },
+            { id: 5, clientName: 'Juan Rodriguez', petName: 'Paco', serviceName: 'Corte de Pico y Uñas', staffName: 'Sofia Vergara', date: '2025-10-01', price: 40000 },
+            { id: 6, clientName: 'Carlos Gómez', petName: 'Luna', serviceName: 'Limpieza Dental', staffName: 'Juanita Manjarres', date: '2025-10-03', price: 90000 },
+        ];
+
+        // --- DOM Elements ---
+        const tableBody = document.getElementById('history-table-body');
+        const searchInput = document.getElementById('search-text');
+        const dateFromInput = document.getElementById('date-from');
+        const dateToInput = document.getElementById('date-to');
+
+        // --- Render Function ---
+        const renderHistory = (data) => {
+            tableBody.innerHTML = '';
+            if(data.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="5" class="text-center p-4 text-gray-500">No se encontraron registros.</td></tr>`;
+                return;
+            }
+            data.forEach(record => {
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50';
+                row.innerHTML = `
+                    <td class="p-3">
+                        <p class="font-semibold text-gray-800">${record.clientName}</p>
+                        <p class="text-sm text-gray-500">${record.petName}</p>
+                    </td>
+                    <td class="p-3 text-gray-600">${record.serviceName}</td>
+                    <td class="p-3 text-gray-600">${record.staffName}</td>
+                    <td class="p-3 text-gray-600">${record.date}</td>
+                    <td class="p-3 text-right text-gray-800 font-medium">${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(record.price)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
+        
+        // --- Filter Logic ---
+        const applyFilters = () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const dateFrom = dateFromInput.value;
+            const dateTo = dateToInput.value;
+
+            let filteredData = historyData.filter(item => {
+                const matchesSearch = item.clientName.toLowerCase().includes(searchTerm) || item.petName.toLowerCase().includes(searchTerm);
+                const matchesDateFrom = !dateFrom || item.date >= dateFrom;
+                const matchesDateTo = !dateTo || item.date <= dateTo;
+                return matchesSearch && matchesDateFrom && matchesDateTo;
+            });
+            renderHistory(filteredData);
+        };
+        
+        searchInput.addEventListener('input', applyFilters);
+        dateFromInput.addEventListener('change', applyFilters);
+        dateToInput.addEventListener('change', applyFilters);
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHistory(historyData);
+        });
+    </script>
+</body>
+</html>
