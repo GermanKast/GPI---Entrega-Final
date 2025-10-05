@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita - Patitas Felices</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-gray-800 text-white w-64 min-h-screen p-4 fixed md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+            <div class="flex items-center mb-8">
+                <i class="fa-solid fa-paw text-3xl text-teal-400 mr-3"></i>
+                <h1 class="text-2xl font-bold">Patitas Felices</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <a href="cliente-home.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-home mr-3 w-6 text-center"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="cliente-datos.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-user-circle mr-3 w-6 text-center"></i>
+                            Mis Datos y Mascotas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="cliente-historico.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-history mr-3 w-6 text-center"></i>
+                            Mi Histórico
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="cliente-agendar.html" class="flex items-center p-3 rounded-lg bg-teal-600 font-semibold">
+                             <i class="fas fa-calendar-plus mr-3 w-6 text-center"></i>
+                            Agendar Cita
+                        </a>
+                    </li>
+                    <li class="mt-auto absolute bottom-4 w-56">
+                        <a href="login.html" class="flex items-center p-3 rounded-lg hover:bg-red-500 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3 w-6 text-center"></i>
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-md p-4 flex justify-between items-center">
+                 <button id="menu-toggle" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <h2 class="text-2xl font-bold text-gray-800">Agendar una Cita</h2>
+                <div class="flex items-center">
+                    <span class="mr-4 text-gray-700">Hola, Ana Pérez</span>
+                    <img src="https://i.pravatar.cc/150?img=25" alt="Avatar de usuario" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="services-container">
+                    <!-- Service cards will be inserted by JS -->
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Appointment Dialog -->
+    <dialog id="appointment-dialog" class="p-0 rounded-lg shadow-xl w-11/12 max-w-lg">
+        <div class="bg-white p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="dialog-title" class="text-2xl font-bold text-gray-800">Agendar Cita</h2>
+                <button id="close-dialog-btn" class="text-gray-500 hover:text-gray-800">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+            <form id="appointment-form">
+                <div class="mb-4">
+                    <label for="pet-select" class="block text-sm font-medium text-gray-700">¿Para qué mascota?</label>
+                    <select id="pet-select" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <!-- Pet options will be inserted by JS -->
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="appointment-date" class="block text-sm font-medium text-gray-700">Fecha</label>
+                        <input type="date" id="appointment-date" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    </div>
+                    <div>
+                        <label for="appointment-time" class="block text-sm font-medium text-gray-700">Hora</label>
+                        <select id="appointment-time" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            <option>09:00 AM</option>
+                            <option>10:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>02:00 PM</option>
+                            <option>03:00 PM</option>
+                            <option>04:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="staff-select" class="block text-sm font-medium text-gray-700">Profesional de Preferencia</label>
+                    <select id="staff-select" class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                         <!-- Staff options will be inserted by JS -->
+                    </select>
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button type="button" id="cancel-btn" class="mr-3 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300">Cancelar</button>
+                    <button type="submit" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600">Confirmar Cita</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        // --- Sidebar Toggle for Mobile ---
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        });
+
+        // --- Mock Data ---
+        const services = [
+            { id: 1, name: 'Baño y Secado', description: 'Productos hipoalergénicos para cuidar su piel y pelaje.', price: 50000, duration: 60, imageUrl: 'https://placehold.co/600x400/34d399/ffffff?text=Baño+y+Secado' },
+            { id: 2, name: 'Corte de Pelo', description: 'Cortes de raza o personalizados por estilistas expertos.', price: 75000, duration: 90, imageUrl: 'https://placehold.co/600x400/60a5fa/ffffff?text=Corte+de+Pelo' },
+            { id: 3, name: 'Limpieza Dental', description: 'Servicio sin anestesia para un aliento fresco y saludable.', price: 90000, duration: 45, imageUrl: 'https://placehold.co/600x400/f87171/ffffff?text=Limpieza+Dental' },
+            { id: 4, name: 'Corte de Uñas', description: 'Corte de uñas seguro y profesional para cuidar sus patitas.', price: 25000, duration: 20, imageUrl: 'https://placehold.co/600x400/facc15/ffffff?text=Corte+de+Uñas' }
+        ];
+
+        const myPets = [
+            { id: 1, name: 'Rocky' },
+            { id: 2, name: 'Mishi' }
+        ];
+        
+        const staff = [
+            { id: 1, name: 'Juanita Manjarres' },
+            { id: 2, name: 'Diego Amado' },
+            { id: 3, name: 'Sofia Vergara' }
+        ];
+
+        // --- DOM Elements ---
+        const servicesContainer = document.getElementById('services-container');
+        const appointmentDialog = document.getElementById('appointment-dialog');
+        const closeDialogBtn = document.getElementById('close-dialog-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const dialogTitle = document.getElementById('dialog-title');
+        const petSelect = document.getElementById('pet-select');
+        const staffSelect = document.getElementById('staff-select');
+        const appointmentForm = document.getElementById('appointment-form');
+
+        // --- Render Functions ---
+        const renderServices = () => {
+            servicesContainer.innerHTML = '';
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow-md overflow-hidden flex flex-col';
+                card.innerHTML = `
+                    <img src="${service.imageUrl}" alt="${service.name}" class="w-full h-48 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800">${service.name}</h3>
+                        <p class="text-gray-600 my-2 flex-grow">${service.description}</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
+                            <span><i class="fas fa-clock mr-1"></i> ${service.duration} min</span>
+                            <span class="font-semibold text-teal-600 text-lg">$${service.price.toLocaleString('es-CO')}</span>
+                        </div>
+                        <button data-service-id="${service.id}" data-service-name="${service.name}" class="schedule-btn mt-auto w-full bg-teal-500 text-white py-2 rounded-lg hover:bg-teal-600 transition-colors">
+                            Agendar Cita
+                        </button>
+                    </div>
+                `;
+                servicesContainer.appendChild(card);
+            });
+        };
+
+        const populateSelects = () => {
+            petSelect.innerHTML = myPets.map(pet => `<option value="${pet.id}">${pet.name}</option>`).join('');
+            staffSelect.innerHTML = '<option value="">Cualquier profesional</option>' + staff.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+        };
+
+        // --- Event Listeners & Dialog Logic ---
+        servicesContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('schedule-btn')) {
+                const serviceName = e.target.dataset.serviceName;
+                dialogTitle.textContent = `Agendar: ${serviceName}`;
+                appointmentDialog.showModal();
+            }
+        });
+
+        closeDialogBtn.addEventListener('click', () => appointmentDialog.close());
+        cancelBtn.addEventListener('click', () => appointmentDialog.close());
+        
+        appointmentDialog.addEventListener('click', (e) => {
+            if(e.target === appointmentDialog) appointmentDialog.close();
+        });
+
+        appointmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would normally send the data to a server
+            alert('¡Cita agendada con éxito! Recibirás una confirmación pronto.');
+            appointmentForm.reset();
+            appointmentDialog.close();
+        });
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            populateSelects();
+        });
+    </script>
+</body>
+</html>
