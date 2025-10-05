@@ -89,15 +89,22 @@
     </div>
 
     <script>
-        // Simulate login and redirect to home page
         const loginForm = document.getElementById('login-form');
+        const emailInput = document.getElementById('email');
+        const errorMessage = document.getElementById('error-message');
 
-        loginForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent actual form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evitamos que el formulario se envíe de la manera tradicional
             
-            // Here you would typically validate credentials.
-            // For this project, we'll just redirect.
-            window.location.href = 'home.html';
+            const email = emailInput.value;
+
+            if (email === 'admin@correo.com') {
+                window.location.href = 'home.html';
+            } else if (email === 'cliente@correo.com') {
+                window.location.href = 'cliente-home.html';
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
         });
     </script>
 </body>
