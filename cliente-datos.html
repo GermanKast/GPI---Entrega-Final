@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Datos y Mascotas - Patitas Felices</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-gray-800 text-white w-64 min-h-screen p-4 fixed md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+            <div class="flex items-center mb-8">
+                <i class="fa-solid fa-paw text-3xl text-teal-400 mr-3"></i>
+                <h1 class="text-2xl font-bold">Patitas Felices</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <a href="cliente-home.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-home mr-3 w-6 text-center"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="cliente-datos.html" class="flex items-center p-3 rounded-lg bg-teal-600 font-semibold">
+                            <i class="fas fa-user-circle mr-3 w-6 text-center"></i>
+                            Mis Datos y Mascotas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-history mr-3 w-6 text-center"></i>
+                            Mi Histórico
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="appointments.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                             <i class="fas fa-calendar-plus mr-3 w-6 text-center"></i>
+                            Agendar Cita
+                        </a>
+                    </li>
+                    <li class="mt-auto absolute bottom-4 w-56">
+                        <a href="login.html" class="flex items-center p-3 rounded-lg hover:bg-red-500 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3 w-6 text-center"></i>
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-md p-4 flex justify-between items-center">
+                 <button id="menu-toggle" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <h2 class="text-2xl font-bold text-gray-800">Mis Datos y Mascotas</h2>
+                <div class="flex items-center">
+                    <span class="mr-4 text-gray-700">Hola, Ana Pérez</span>
+                    <img src="https://i.pravatar.cc/150?img=25" alt="Avatar de usuario" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <!-- My Data Section -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-700">Mis Datos Personales</h3>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm">
+                            <i class="fas fa-pencil-alt mr-2"></i>Editar
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600">
+                        <div><span class="font-semibold text-gray-800">Nombre:</span> Ana Pérez</div>
+                        <div><span class="font-semibold text-gray-800">Correo:</span> cliente@correo.com</div>
+                        <div><span class="font-semibold text-gray-800">Teléfono:</span> 300 123 4567</div>
+                        <div><span class="font-semibold text-gray-800">Dirección:</span> Calle 123 # 45-67</div>
+                    </div>
+                </div>
+
+                <!-- My Pets Section -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-700">Mis Mascotas</h3>
+                        <button id="add-pet-btn" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors text-sm">
+                            <i class="fas fa-plus mr-2"></i>Agregar Nueva Mascota
+                        </button>
+                    </div>
+                    <div id="pets-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Pet cards will be populated by JS -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Pet Dialog -->
+    <dialog id="add-pet-dialog" class="p-0 rounded-lg shadow-xl w-11/12 max-w-md">
+        <div class="bg-white p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Agregar Mascota</h2>
+                <button id="close-dialog-btn" class="text-gray-500 hover:text-gray-800">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+            <form id="add-pet-form">
+                <div class="mb-4">
+                    <label for="pet-name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <input type="text" id="pet-name" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div class="mb-4">
+                    <label for="pet-species" class="block text-sm font-medium text-gray-700">Especie</label>
+                    <select id="pet-species" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="pet-breed" class="block text-sm font-medium text-gray-700">Raza</label>
+                    <input type="text" id="pet-breed" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                 <div class="mb-4">
+                    <label for="pet-age" class="block text-sm font-medium text-gray-700">Edad (años)</label>
+                    <input type="number" id="pet-age" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button type="button" id="cancel-btn" class="mr-3 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300">Cancelar</button>
+                    <button type="submit" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600">Guardar Mascota</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        // --- Sidebar Toggle for Mobile ---
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        });
+
+        // --- Mock Data ---
+        const myPets = [
+            { id: 1, name: 'Rocky', species: 'Perro', breed: 'Golden Retriever', age: 3, imageUrl: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?q=80&w=1000&auto=format&fit=crop' },
+            { id: 2, name: 'Mishi', species: 'Gato', breed: 'Siamés', age: 5, imageUrl: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043&auto=format&fit=crop' }
+        ];
+
+        // --- DOM Elements ---
+        const petsContainer = document.getElementById('pets-container');
+        const addPetDialog = document.getElementById('add-pet-dialog');
+        const addPetBtn = document.getElementById('add-pet-btn');
+        const closeDialogBtn = document.getElementById('close-dialog-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const addPetForm = document.getElementById('add-pet-form');
+
+        // --- Render Pets Function ---
+        const renderPets = () => {
+            petsContainer.innerHTML = '';
+            myPets.forEach(pet => {
+                const petCard = document.createElement('div');
+                petCard.className = 'bg-gray-50 p-4 rounded-lg shadow-sm border';
+                petCard.innerHTML = `
+                    <img src="${pet.imageUrl}" alt="Foto de ${pet.name}" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h4 class="text-lg font-bold text-gray-800">${pet.name}</h4>
+                    <p class="text-gray-600">${pet.species} - ${pet.breed}</p>
+                    <p class="text-sm text-gray-500">Edad: ${pet.age} años</p>
+                    <div class="mt-4 flex space-x-2">
+                        <button class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full hover:bg-blue-200">Editar</button>
+                        <button class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full hover:bg-red-200">Eliminar</button>
+                    </div>
+                `;
+                petsContainer.appendChild(petCard);
+            });
+        };
+
+        // --- Dialog Logic ---
+        addPetBtn.addEventListener('click', () => addPetDialog.showModal());
+        closeDialogBtn.addEventListener('click', () => addPetDialog.close());
+        cancelBtn.addEventListener('click', () => addPetDialog.close());
+        
+        addPetDialog.addEventListener('click', (e) => {
+          if (e.target === addPetDialog) {
+            addPetDialog.close();
+          }
+        });
+
+        // --- Form Submission ---
+        addPetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newPet = {
+                id: Date.now(),
+                name: document.getElementById('pet-name').value,
+                species: document.getElementById('pet-species').value,
+                breed: document.getElementById('pet-breed').value,
+                age: document.getElementById('pet-age').value,
+                imageUrl: document.getElementById('pet-species').value === 'Gato' 
+                    ? 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043&auto=format&fit=crop' 
+                    : 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?q=80&w=1974&auto=format&fit=crop'
+            };
+            myPets.unshift(newPet); // Add to the beginning of the array
+            renderPets();
+            addPetForm.reset();
+            addPetDialog.close();
+        });
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', renderPets);
+    </script>
+</body>
+</html>
