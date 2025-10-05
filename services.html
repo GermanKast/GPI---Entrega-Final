@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Servicios - Patitas Felices</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-gray-800 text-white w-64 min-h-screen p-4 fixed md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+            <div class="flex items-center mb-8">
+                <i class="fa-solid fa-paw text-3xl text-teal-400 mr-3"></i>
+                <h1 class="text-2xl font-bold">Patitas Felices</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <a href="home.html" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-home mr-3 w-6 text-center"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="services.html" class="flex items-center p-3 rounded-lg bg-teal-600 font-semibold">
+                            <i class="fas fa-box mr-3 w-6 text-center"></i>
+                            Servicios
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-users mr-3 w-6 text-center"></i>
+                            Clientes y Mascotas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-calendar-alt mr-3 w-6 text-center"></i>
+                            Citas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-user-tie mr-3 w-6 text-center"></i>
+                            Personal
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-history mr-3 w-6 text-center"></i>
+                            Históricos
+                        </a>
+                    </li>
+                    <li class="mt-auto absolute bottom-4 w-56">
+                        <a href="login.html" class="flex items-center p-3 rounded-lg hover:bg-red-500 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3 w-6 text-center"></i>
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-md p-4 flex justify-between items-center">
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <h2 class="text-2xl font-bold text-gray-800">Gestión de Servicios</h2>
+                <div class="flex items-center">
+                    <span class="mr-4 text-gray-700">Bienvenido, Admin</span>
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Avatar de usuario" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700">Lista de Servicios Ofrecidos</h3>
+                    <button id="add-service-btn" class="bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors flex items-center">
+                        <i class="fas fa-plus mr-2"></i>
+                        Agregar Nuevo Servicio
+                    </button>
+                </div>
+                
+                <!-- Services Table -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3">Nombre del Servicio</th>
+                                    <th class="p-3">Descripción</th>
+                                    <th class="p-3">Precio</th>
+                                    <th class="p-3">Duración (Estimada)</th>
+                                    <th class="p-3 text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="services-table-body">
+                                <!-- Rows will be inserted by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add/Edit Service Dialog -->
+    <dialog id="service-dialog" class="w-11/12 max-w-lg rounded-lg shadow-xl p-0">
+        <div class="bg-white rounded-lg">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 id="dialog-title" class="text-xl font-bold text-gray-800">Agregar Nuevo Servicio</h3>
+                <button id="close-dialog-btn" class="text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+            </div>
+            <form id="service-form" class="p-6 space-y-4">
+                <div>
+                    <label for="service-name" class="block mb-1 text-sm font-semibold text-gray-700">Nombre del Servicio</label>
+                    <input type="text" id="service-name" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                </div>
+                <div>
+                    <label for="service-description" class="block mb-1 text-sm font-semibold text-gray-700">Descripción</label>
+                    <textarea id="service-description" rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="service-price" class="block mb-1 text-sm font-semibold text-gray-700">Precio</label>
+                        <input type="number" id="service-price" placeholder="Ej: 50000" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    <div>
+                        <label for="service-duration" class="block mb-1 text-sm font-semibold text-gray-700">Duración (minutos)</label>
+                        <input type="number" id="service-duration" placeholder="Ej: 60" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                </div>
+                <div class="flex justify-end pt-4">
+                    <button type="button" id="cancel-btn" class="bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 mr-2">Cancelar</button>
+                    <button type="submit" class="bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        // --- Sidebar Toggle for Mobile ---
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        });
+
+        // --- Mock Data ---
+        let services = [
+            { id: 1, name: 'Baño y Secado', description: 'Baño con shampoo hipoalergénico y secado profesional.', price: 50000, duration: 60 },
+            { id: 2, name: 'Corte de Pelo', description: 'Corte según la raza o preferencia del cliente.', price: 75000, duration: 90 },
+            { id: 3, name: 'Limpieza Dental', description: 'Limpieza sin anestesia para un aliento fresco.', price: 60000, duration: 45 },
+            { id: 4, name: 'Corte de Uñas', description: 'Corte y limado de uñas seguro y profesional.', price: 25000, duration: 20 },
+            { id: 5, name: 'Plan Completo', description: 'Incluye Baño, Corte de Pelo y Corte de Uñas.', price: 130000, duration: 120 },
+        ];
+        
+        const serviceDialog = document.getElementById('service-dialog');
+        const addServiceBtn = document.getElementById('add-service-btn');
+        const closeDialogBtn = document.getElementById('close-dialog-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const serviceForm = document.getElementById('service-form');
+
+        const renderServices = () => {
+            const tableBody = document.getElementById('services-table-body');
+            tableBody.innerHTML = '';
+            services.forEach(service => {
+                const row = document.createElement('tr');
+                row.classList.add('border-b');
+                row.innerHTML = `
+                    <td class="p-3 font-semibold">${service.name}</td>
+                    <td class="p-3 text-gray-600">${service.description}</td>
+                    <td class="p-3 text-gray-800">$${service.price.toLocaleString('es-CO')}</td>
+                    <td class="p-3 text-gray-600">${service.duration} min</td>
+                    <td class="p-3 text-center">
+                        <button class="text-blue-500 hover:text-blue-700 mx-2"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="text-red-500 hover:text-red-700 mx-2"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
+
+        // --- Dialog Logic ---
+        addServiceBtn.addEventListener('click', () => {
+            serviceForm.reset();
+            document.getElementById('dialog-title').textContent = 'Agregar Nuevo Servicio';
+            serviceDialog.showModal();
+        });
+
+        closeDialogBtn.addEventListener('click', () => serviceDialog.close());
+        cancelBtn.addEventListener('click', () => serviceDialog.close());
+        
+        serviceDialog.addEventListener('click', (event) => {
+            if (event.target === serviceDialog) {
+                serviceDialog.close();
+            }
+        });
+
+        // --- Form Submission (Simulated) ---
+        serviceForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you'd send this data to a server.
+            // Here, we just add it to our local array.
+            const newService = {
+                id: Date.now(), // simple unique id
+                name: document.getElementById('service-name').value,
+                description: document.getElementById('service-description').value,
+                price: parseInt(document.getElementById('service-price').value),
+                duration: parseInt(document.getElementById('service-duration').value),
+            };
+            services.unshift(newService);
+            renderServices();
+            serviceDialog.close();
+        });
+
+        // --- Initial Render ---
+        document.addEventListener('DOMContentLoaded', renderServices);
+
+    </script>
+</body>
+</html>
