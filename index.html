@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patitas Felices - Estética Canina y Felina</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom styles for the Poppins font */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom styles for the dialog backdrop */
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- =========== Header =========== -->
+    <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-teal-600">
+                <i class="fa-solid fa-paw mr-2"></i>Patitas Felices
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#services" class="text-gray-600 hover:text-teal-600 transition duration-300">Servicios</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-teal-600 transition duration-300">Testimonios</a>
+                <a href="#contact" class="text-gray-600 hover:text-teal-600 transition duration-300">Contacto</a>
+                <a href="#" class="bg-teal-500 text-white py-2 px-4 rounded-full hover:bg-teal-600 transition duration-300">
+                    Iniciar Sesión
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars fa-lg text-teal-600"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="#services" class="block py-2 px-4 text-sm text-gray-700 hover:bg-teal-50">Servicios</a>
+            <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-700 hover:bg-teal-50">Testimonios</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-teal-50">Contacto</a>
+            <a href="#" class="block py-3 px-4 text-center text-sm bg-teal-500 text-white font-semibold hover:bg-teal-600">Iniciar Sesión</a>
+        </div>
+    </header>
+
+    <main class="pt-20"> <!-- Padding top to avoid content being hidden by fixed header -->
+
+        <!-- =========== Hero Section =========== -->
+        <section class="relative h-[60vh] md:h-[80vh] bg-cover bg-center flex items-center" style="background-image: url('https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">El mejor cuidado para tus mejores amigos</h1>
+                <p class="text-lg md:text-xl text-white mb-8">Ofrecemos servicios de estética de alta calidad para consentir a tus perros y gatos.</p>
+                <a href="#" class="bg-teal-500 text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-teal-600 transition duration-300 transform hover:scale-105">
+                    Agenda una Cita
+                </a>
+            </div>
+        </section>
+
+        <!-- =========== Services Section =========== -->
+        <section id="services" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestros Servicios</h2>
+                <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Desde un baño relajante hasta un corte de exposición, tenemos todo para que tu mascota luzca y se sienta increíble.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="text-teal-500 text-5xl mb-4"><i class="fa-solid fa-shower"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Baño y Secado</h3>
+                        <p class="text-gray-600">Utilizamos productos hipoalergénicos para cuidar la piel y el pelaje de tu mascota.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="text-teal-500 text-5xl mb-4"><i class="fa-solid fa-scissors"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Corte de Pelo</h3>
+                        <p class="text-gray-600">Cortes de raza o personalizados según tu preferencia, realizados por estilistas expertos.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="text-teal-500 text-5xl mb-4"><i class="fa-solid fa-tooth"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Limpieza Dental</h3>
+                        <p class="text-gray-600">Servicio de limpieza dental sin anestesia para un aliento fresco y saludable.</p>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="text-teal-500 text-5xl mb-4"><i class="fa-solid fa-hand-sparkles"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Corte de Uñas</h3>
+                        <p class="text-gray-600">Cuidamos las patitas de tu compañero con un corte de uñas seguro y profesional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Testimonials Section =========== -->
+        <section id="testimonials" class="py-16 md:py-24 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">Lo que dicen nuestros clientes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-gray-600 italic mb-4">"¡El servicio es increíble! Mi perro Rocky nunca se había visto tan bien. El personal es muy amable y profesional."</p>
+                        <div class="flex items-center">
+                            <img class="w-12 h-12 rounded-full mr-4" src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?q=80&w=1000&auto=format&fit=crop" alt="Foto de perro">
+                            <div>
+                                <p class="font-semibold text-gray-800">Ana Pérez</p>
+                                <p class="text-sm text-gray-500">Dueña de Rocky</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-gray-600 italic mb-4">"Llevo a mi gata Luna todos los meses y siempre sale feliz y relajada. ¡Recomiendo totalmente Patitas Felices!"</p>
+                        <div class="flex items-center">
+                            <img class="w-12 h-12 rounded-full mr-4 object-cover" src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?q=80&w=2080&auto=format&fit=crop" alt="Foto de gato">
+                            <div>
+                                <p class="font-semibold text-gray-800">Carlos Gómez</p>
+                                <p class="text-sm text-gray-500">Dueño de Luna</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-gray-600 italic mb-4">"La atención al detalle es fantástica. Se nota que aman a los animales. Un lugar seguro y confiable."</p>
+                        <div class="flex items-center">
+                            <img class="w-12 h-12 rounded-full mr-4 object-cover" src="https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1924&auto=format&fit=crop" alt="Foto de perro">
+                            <div>
+                                <p class="font-semibold text-gray-800">Laura Jimenez</p>
+                                <p class="text-sm text-gray-500">Dueña de Max</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Contact Section =========== -->
+        <section id="contact" class="py-16 md:py-24 bg-teal-700 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">¡Visítanos!</h2>
+                <p class="mb-8">Estamos listos para recibir a tu mascota.</p>
+                <div class="text-lg">
+                    <p><i class="fas fa-map-marker-alt mr-2"></i>Calle Falsa 123, Ciudad Ejemplo</p>
+                    <p class="mt-2"><i class="fas fa-phone mr-2"></i>(123) 456-7890</p>
+                    <p class="mt-2"><i class="fas fa-clock mr-2"></i>Lunes a Sábado: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- =========== Footer =========== -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-2xl hover:text-teal-400 transition duration-300"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-2xl hover:text-teal-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-2xl hover:text-teal-400 transition duration-300"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="mb-4">&copy; 2025 Patitas Felices. Todos los derechos reservados.</p>
+            <button id="info-btn" class="bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition duration-300 text-sm">
+                Información del Proyecto
+            </button>
+        </div>
+    </footer>
+
+    <!-- =========== Project Info Dialog =========== -->
+    <dialog id="info-dialog" class="w-11/12 max-w-4xl rounded-lg shadow-xl p-6 md:p-8 bg-white relative">
+        <div class="max-h-[80vh] overflow-y-auto pr-4">
+             <button id="close-dialog-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+            
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Información del Proyecto</h2>
+            
+            <!-- Project Credits -->
+            <div class="bg-slate-100 p-4 rounded-lg text-center mb-6">
+                <h3 class="text-lg font-semibold text-teal-700">ENTREGA FINAL SEMANA 7</h3>
+                <p class="font-semibold mt-2">Subgrupo 28</p>
+                <ul class="text-gray-700 mt-2 list-none">
+                    <li>David Caro Escobar</li>
+                    <li>María Medina Cárdenas</li>
+                    <li>Juan Camilo Pacheco Cruz</li>
+                    <li>Miguel Valero Correal</li>
+                    <li>Germán Alberto Castañeda Rojas</li>
+                </ul>
+                <p class="mt-4 mb-4 font-semibold">Institución Universitaria Politécnico Grancolombiano</p>
+                <p class="text-sm text-gray-600">Gerencia de Proyectos Informáticos</p>
+                <p class="text-gray-700">Ing. MSc. Marcela Casante Montoya</p>
+                <p class="text-sm text-gray-600 mt-4">Colombia</p>
+                <p class="text-sm text-gray-600">7 de octubre del 2025</p>
+            </div>
+
+            <hr class="my-6">
+
+            <!-- Project Description -->
+            <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">Descripción del Software</h3>
+                <p class="text-gray-700 mb-4">
+                    Este software es un prototipo de aplicación web para la gestión de una estética de mascotas.
+                    Se ha desarrollado como parte de la entrega final del módulo de
+                    <strong>GERENCIA DE PROYECTOS INFORMÁTICOS</strong> a cargo de la Ingeniera Maestra en Ciencias 
+                    Marcela Casante Montoya de la Institución Universitaria Politécnico Grancolombiano.
+                </p>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- =========== JavaScript =========== -->
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Project Info Dialog Toggle ---
+        const infoDialog = document.getElementById('info-dialog');
+        const infoBtn = document.getElementById('info-btn');
+        const closeDialogBtn = document.getElementById('close-dialog-btn');
+
+        // Open dialog
+        infoBtn.addEventListener('click', () => {
+            infoDialog.showModal();
+        });
+
+        // Close dialog with button
+        closeDialogBtn.addEventListener('click', () => {
+            infoDialog.close();
+        });
+
+        // Close dialog on backdrop click
+        infoDialog.addEventListener('click', (event) => {
+            if (event.target === infoDialog) {
+                infoDialog.close();
+            }
+        });
+    </script>
+</body>
+</html>
