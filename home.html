@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Patitas Felices</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-gray-800 text-white w-64 min-h-screen p-4 fixed md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
+            <div class="flex items-center mb-8">
+                <i class="fa-solid fa-paw text-3xl text-teal-400 mr-3"></i>
+                <h1 class="text-2xl font-bold">Patitas Felices</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg bg-teal-600 font-semibold">
+                            <i class="fas fa-home mr-3 w-6 text-center"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-box mr-3 w-6 text-center"></i>
+                            Servicios
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-users mr-3 w-6 text-center"></i>
+                            Clientes y Mascotas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-calendar-alt mr-3 w-6 text-center"></i>
+                            Citas
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-user-tie mr-3 w-6 text-center"></i>
+                            Personal
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-history mr-3 w-6 text-center"></i>
+                            Históricos
+                        </a>
+                    </li>
+                    <li class="mt-auto absolute bottom-4 w-56">
+                        <a href="login.html" class="flex items-center p-3 rounded-lg hover:bg-red-500 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3 w-6 text-center"></i>
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-md p-4 flex justify-between items-center">
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <h2 class="text-2xl font-bold text-gray-800 hidden md:block">Dashboard</h2>
+                <div class="flex items-center">
+                    <span class="mr-4 text-gray-700">Bienvenido, Admin</span>
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Avatar de usuario" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+                        <div class="bg-teal-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-calendar-check fa-2x text-teal-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500">Citas para Hoy</p>
+                            <p id="today-appointments" class="text-3xl font-bold text-gray-800">5</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+                        <div class="bg-sky-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-users fa-2x text-sky-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500">Clientes Activos</p>
+                            <p class="text-3xl font-bold text-gray-800">84</p>
+                        </div>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+                        <div class="bg-amber-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-paw fa-2x text-amber-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500">Servicios (Mes)</p>
+                            <p class="text-3xl font-bold text-gray-800">120</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-dollar-sign fa-2x text-emerald-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500">Ingresos (Mes)</p>
+                            <p class="text-2xl font-bold text-gray-800">$5,2M</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Próximas Citas</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3">Hora</th>
+                                    <th class="p-3">Mascota</th>
+                                    <th class="p-3">Cliente</th>
+                                    <th class="p-3">Servicio</th>
+                                    <th class="p-3">Estilista</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointments-table-body">
+                                <!-- Rows will be inserted here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // --- Sidebar Toggle for Mobile ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // --- Mock Data ---
+        const appointments = [
+            { time: '09:00 AM', petName: 'Rocky', clientName: 'Ana Pérez', service: 'Baño y Corte', stylist: 'Carlos V.' },
+            { time: '10:30 AM', petName: 'Luna', clientName: 'Carlos Gómez', service: 'Corte de Uñas', stylist: 'Maria L.' },
+            { time: '11:00 AM', petName: 'Max', clientName: 'Laura Jimenez', service: 'Baño y Secado', stylist: 'Carlos V.' },
+            { time: '01:00 PM', petName: 'Thor', clientName: 'Pedro Pascal', service: 'Corte de Pelo', stylist: 'Ana G.' },
+            { time: '02:30 PM', petName: 'Nala', clientName: 'Sofia Vergara', service: 'Limpieza Dental', stylist: 'Maria L.' },
+        ];
+
+        // --- Render Data on Page Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const appointmentsTableBody = document.getElementById('appointments-table-body');
+            
+            // Set number of appointments for today card
+            document.getElementById('today-appointments').textContent = appointments.length;
+
+            // Populate appointments table
+            appointments.forEach(appt => {
+                const row = document.createElement('tr');
+                row.classList.add('border-b');
+                row.innerHTML = `
+                    <td class="p-3 font-semibold text-teal-700">${appt.time}</td>
+                    <td class="p-3">${appt.petName}</td>
+                    <td class="p-3 text-gray-600">${appt.clientName}</td>
+                    <td class="p-3"><span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">${appt.service}</span></td>
+                    <td class="p-3 text-gray-600">${appt.stylist}</td>
+                `;
+                appointmentsTableBody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -88,5 +88,18 @@
         </div>
     </div>
 
+    <script>
+        // Simulate login and redirect to home page
+        const loginForm = document.getElementById('login-form');
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent actual form submission
+            
+            // Here you would typically validate credentials.
+            // For this project, we'll just redirect.
+            window.location.href = 'home.html';
+        });
+    </script>
 </body>
 </html>
+
